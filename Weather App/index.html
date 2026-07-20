@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pro Weather</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">☁</div>
+                <div>
+                    <h1>Pro Weather</h1>
+                    <p id="subtitle">Valós idejű időjárás</p>
+                </div>
+            </div>
+
+            <form class="search-wrap" id="searchForm">
+                <span>🔍</span>
+                <input id="searchInput" type="text" placeholder="Város keresése..." autocomplete="off" />
+                <button type="submit">Keresés</button>
+            </form>
+
+            <div class="top-actions">
+                <button class="ghost-btn" id="locationBtn">📍 Saját hely</button>
+                <button class="ghost-btn active" id="unitBtn">°C</button>
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <section class="main-col">
+                <section class="hero-card card">
+                    <div class="hero-head">
+                        <div>
+                            <span class="eyebrow" id="locationLabel">Budapest, HU</span>
+                            <h2 id="cityTitle">Budapest</h2>
+                            <p id="weatherDesc">Töltés...</p>
+                        </div>
+                        <div class="hero-time">
+                            <span id="dayText">--</span>
+                            <strong id="timeText">--:--</strong>
+                        </div>
+                    </div>
+
+                    <div class="hero-body">
+                        <div class="temp-block">
+                            <div class="temp" id="currentTemp">--°</div>
+                            <div class="feels-like">Hőérzet: <strong id="feelsLike">--°</strong></div>
+                        </div>
+
+                        <div class="icon-block">
+                            <div class="weather-icon" id="weatherIcon">⛅</div>
+                            <div class="mini-stats">
+                                <div><span>Csapadék</span><strong id="precipNow">--</strong></div>
+                                <div><span>Szél</span><strong id="windNow">--</strong></div>
+                                <div><span>Páratartalom</span><strong id="humidityNow">--</strong></div>
+                                <div><span>Légnyomás</span><strong id="pressureNow">--</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card section-card">
+                    <div class="section-head">
+                        <h3>Következő órák</h3>
+                        <span id="hourlyNote">Friss adatok</span>
+                    </div>
+                    <div class="hourly-grid" id="hourlyGrid"></div>
+                </section>
+
+                <section class="card section-card">
+                    <div class="section-head">
+                        <h3>7 napos előrejelzés</h3>
+                        <span>Hőmérséklet és csapadék</span>
+                    </div>
+                    <div class="daily-list" id="dailyList"></div>
+                </section>
+            </section>
+
+            <aside class="side-col">
+                <section class="card section-card">
+                    <div class="section-head">
+                        <h3>Részletek</h3>
+                        <span>Mai adatok</span>
+                    </div>
+                    <div class="details-grid">
+                        <div class="detail-box"><span>UV</span><strong id="uvValue">--</strong></div>
+                        <div class="detail-box"><span>Napkelte</span><strong id="sunriseValue">--</strong></div>
+                        <div class="detail-box"><span>Napnyugta</span><strong id="sunsetValue">--</strong></div>
+                        <div class="detail-box"><span>Csapadék esély</span><strong id="rainChance">--</strong></div>
+                    </div>
+                </section>
+
+                <section class="card section-card">
+                    <div class="section-head">
+                        <h3>Eső esélye</h3>
+                        <span>Következő 12 óra</span>
+                    </div>
+                    <div class="rain-chart" id="rainChart"></div>
+                </section>
+
+                <section class="card section-card status-card">
+                    <div class="section-head">
+                        <h3>Állapot</h3>
+                    </div>
+                    <p id="statusText">Készen áll a keresésre.</p>
+                </section>
+
+                <section class="card section-card">
+                    <div class="section-head">
+                        <h3>Térkép</h3>
+                        <span>Helyzeted</span>
+                    </div>
+                    <div id="map"></div>
+                </section>
+            </aside>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
